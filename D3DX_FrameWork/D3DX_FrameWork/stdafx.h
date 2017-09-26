@@ -17,6 +17,7 @@
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
+#include <assert.h>
 
 
 // TODO: 프로그램에 필요한 추가 헤더는 여기에서 참조합니다.
@@ -25,3 +26,20 @@
 #include <d3dx9.h>
 
 extern HWND g_hWnd;
+
+#define SINGLETONE(class_name)	\
+private:	\
+	class_name();\
+	~class_name();\
+public:\
+	static class_name* GetInstance()\
+	{\
+		static class_name instance;\
+		return &instance;\
+	}
+
+#define SAFE_DELETE(p) { if(p) delete p; p = NULL; }
+#define SAFE_RELEASE(p) { if(p) p->Release(); p = NULL; }
+
+
+#include "cDeviceManager.h"

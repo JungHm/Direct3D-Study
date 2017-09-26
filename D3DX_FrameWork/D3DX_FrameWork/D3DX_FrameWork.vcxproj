@@ -143,6 +143,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cDeviceManager.h" />
     <ClInclude Include="cMainGame.h" />
     <ClInclude Include="D3DX_FrameWork.h" />
     <ClInclude Include="Resource.h" />
@@ -150,6 +151,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="cDeviceManager.cpp" />
     <ClCompile Include="cMainGame.cpp" />
     <ClCompile Include="D3DX_FrameWork.cpp" />
     <ClCompile Include="stdafx.cpp">

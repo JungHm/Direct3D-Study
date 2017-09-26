@@ -1,9 +1,13 @@
 #pragma once
+struct ST_PC_VERTEXT
+{
+	D3DXVECTOR3	p;
+	D3DCOLOR	c;
+	enum { FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE };
+};
 class cMainGame
 {
 private:
-	LPDIRECT3D9 m_pD3D;
-	LPDIRECT3DDEVICE9 m_pD3Ddevice;
 public:
 	cMainGame();
 	~cMainGame();
