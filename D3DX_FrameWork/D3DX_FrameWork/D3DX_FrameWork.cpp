@@ -14,7 +14,13 @@ WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
 
 
 HWND g_hWnd;
+POINT _ptMouse = { 0,0 };
 cMainGame* g_pMainGame;
+
+POINT		PrevMousePt = { 0,0 };
+bool		isClick = false;
+D3DXVECTOR3	m_vCamRotAngle;
+
 // 이 코드 모듈에 들어 있는 함수의 정방향 선언입니다.
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
@@ -149,6 +155,28 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch (message)
 	{
+	case WM_LBUTTONDOWN:
+		PrevMousePt.x = LOWORD(lParam);
+		PrevMousePt.y = HIWORD(lParam);
+		isClick = true;
+		break;
+	case WM_LBUTTONUP:
+		isClick = false;
+		break;
+	case WM_MOUSEMOVE:
+		if (isClick)
+		{
+			POINT ptCurrMouse;
+			ptCurrMouse.x = LOWORD(lParam);
+			ptCurrMouse.y = HIWORD(lParam);
+			float fDeltaX = ptCurrMouse.x - PrevMousePt.x;
+			float fDeltaY = ptCurrMouse.y - PrevMousePt.y;
+			m_vCamRotAngle.x += (fDeltaY / 100.0f);
+			m_vCamRotAngle.y += (fDeltaX / 100.0f);
+
+			PrevMousePt = ptCurrMouse;
+		}
+		break;
 	case WM_COMMAND:
 	{
 		int wmId = LOWORD(wParam);

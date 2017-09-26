@@ -11,6 +11,8 @@
 #define WIN32_LEAN_AND_MEAN             // 거의 사용되지 않는 내용은 Windows 헤더에서 제외합니다.
 // Windows 헤더 파일:
 #include <windows.h>
+#include <vector>
+#include <list>
 
 // C 런타임 헤더 파일입니다.
 #include <stdlib.h>
@@ -26,6 +28,7 @@
 #include <d3dx9.h>
 
 extern HWND g_hWnd;
+extern D3DXVECTOR3	m_vCamRotAngle;
 
 #define SINGLETONE(class_name)	\
 private:	\
