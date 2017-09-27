@@ -55,14 +55,15 @@ void tankMove::Init()
 	ST_PC_VERTEXT v;
 	for (int i = -10; i < 10; i++)
 	{
-		v.p = D3DXVECTOR3(-10, -1, i);
+
+		v.p = D3DXVECTOR3(-10.f, -1.f, i);
 		m_gridVertex.push_back(v);
-		v.p = D3DXVECTOR3(10, -1, i);
+		v.p = D3DXVECTOR3(10.f, -1.f, i);
 		m_gridVertex.push_back(v);
 
-		v.p = D3DXVECTOR3(i, -1, 10);
+		v.p = D3DXVECTOR3(i, -1.f, 10.f);
 		m_gridVertex.push_back(v);
-		v.p = D3DXVECTOR3(i, -1, -10);
+		v.p = D3DXVECTOR3(i, -1.f, -10.f);
 		m_gridVertex.push_back(v);
 	}
 

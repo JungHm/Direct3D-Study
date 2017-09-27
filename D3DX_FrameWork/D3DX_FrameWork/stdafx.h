@@ -46,3 +46,10 @@ public:\
 
 
 #include "cDeviceManager.h"
+
+struct ST_PC_VERTEXT
+{
+	D3DXVECTOR3	p;
+	D3DCOLOR	c;
+	enum { FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE };
+};

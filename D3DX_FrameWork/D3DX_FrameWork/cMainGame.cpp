@@ -19,14 +19,14 @@ void cMainGame::Init()
 	D3DXVECTOR3	vEye(0, 5, -5);
 	D3DXVECTOR3	vLookAt(0, 0, 0);
 	D3DXVECTOR3	vUp(0, 1, 0);
-	D3DXMATRIXA16 matView;
+	D3DXMATRIX matView;
 	D3DXMatrixLookAtLH(&matView, &vEye, &vLookAt, &vUp);
 	g_pD3DDevice->SetTransform(D3DTS_VIEW, &matView);
 
 	RECT rc;
 	GetClientRect(g_hWnd, &rc);
 
-	D3DXMATRIXA16 matProj;
+	D3DXMATRIX matProj;
 	D3DXMatrixPerspectiveFovLH(&matProj,
 		D3DX_PI / 4.0f,
 		rc.right / (float)rc.bottom,

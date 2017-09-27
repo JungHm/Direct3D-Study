@@ -13,21 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\Frame">
+      <UniqueIdentifier>{7dfb0707-9fb7-4ba1-9bcc-8ceb489edd80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\cubeTank">
+      <UniqueIdentifier>{febd7f89-bd26-4fe3-b027-1ef0a39cdd1e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Resource.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="D3DX_FrameWork.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="cMainGame.h">
@@ -36,25 +33,34 @@
     <ClInclude Include="cDeviceManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>소스 파일\Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>소스 파일\Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="D3DX_FrameWork.h">
+      <Filter>소스 파일\Frame</Filter>
+    </ClInclude>
     <ClInclude Include="tankMove.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\cubeTank</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="D3DX_FrameWork.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="cMainGame.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="cDeviceManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="D3DX_FrameWork.cpp">
+      <Filter>소스 파일\Frame</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일\Frame</Filter>
+    </ClCompile>
     <ClCompile Include="tankMove.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\cubeTank</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
