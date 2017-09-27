@@ -21,6 +21,7 @@ void cMainGame::Init()
 
 void cMainGame::Update()
 {
+	//ajdajd
 }
 
 void cMainGame::Render()
