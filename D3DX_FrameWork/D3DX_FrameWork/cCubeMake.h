@@ -1,5 +1,6 @@
 #pragma once
-class cCube
+
+class cCubeMake
 {
 private:
 	std::vector<ST_PC_VERTEXT>	m_vecVertex;
@@ -9,10 +10,11 @@ private:
 	D3DXVECTOR3					m_vDirection;
 
 public:
-	cCube();
-	~cCube();
+	cCubeMake();
+	~cCubeMake();
 
 	void Init();
+	void Adjust();
 	void Update();
 	void Render();
 

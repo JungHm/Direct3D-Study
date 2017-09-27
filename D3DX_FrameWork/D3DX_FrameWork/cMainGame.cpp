@@ -6,8 +6,7 @@
 
 
 cMainGame::cMainGame()
-	: m_pCube(NULL)
-	, m_pGrid(NULL)
+	:m_pGrid(NULL)
 	, m_pCamera(NULL)
 {
 }
@@ -15,7 +14,6 @@ cMainGame::cMainGame()
 
 cMainGame::~cMainGame()
 {
-	SAFE_DELETE(m_pCube);
 	SAFE_DELETE(m_pGrid);
 	SAFE_DELETE(m_pCamera);
 	g_pDeviceManager->Destroy();
@@ -44,9 +42,6 @@ void cMainGame::Init()
 	m_pCamera = new cCamera;
 	m_pCamera->Init();
 
-	m_pCube = new cCube;
-	m_pCube->Init();
-
 	m_pGrid = new cGrid;
 	m_pGrid->Init();
 
@@ -60,10 +55,7 @@ void cMainGame::Update()
 		m_pCamera->Update();
 	}
 
-	if (m_pCube)
-	{
-		m_pCube->Update();
-	}
+
 }
 
 void cMainGame::Render()
@@ -87,10 +79,6 @@ void cMainGame::Render()
 	&m_vecVertex[0],
 	sizeof(ST_PC_VERTEXT));*/
 
-	if (m_pCube)
-	{
-		m_pCube->Render();
-	}
 
 	if (m_pGrid)
 	{
