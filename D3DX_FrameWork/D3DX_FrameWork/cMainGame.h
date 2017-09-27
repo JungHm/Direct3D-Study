@@ -1,11 +1,17 @@
 #pragma once
-#include "tankMove.h"
 
+class cCube;
+class cGrid;
+class cCamera;
 
 class cMainGame
 {
 private:
-	tankMove* tk;
+	std::vector<ST_PC_VERTEXT>	m_vecVertex;
+	cCube*		m_pCube;
+	cGrid*		m_pGrid;
+	cCamera*	m_pCamera;
+
 public:
 	cMainGame();
 	~cMainGame();
@@ -13,6 +19,7 @@ public:
 	void Init();
 	void Update();
 	void Render();
-	void Relase();
+
+	void WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 };
 

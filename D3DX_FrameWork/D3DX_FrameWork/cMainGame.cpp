@@ -1,49 +1,69 @@
 #include "stdafx.h"
 #include "cMainGame.h"
-#include "cDeviceManager.h"
+#include "cCube.h"
+#include "cGrid.h"
+#include "cCamera.h"
 
 
 cMainGame::cMainGame()
+	: m_pCube(NULL)
+	, m_pGrid(NULL)
+	, m_pCamera(NULL)
 {
 }
 
 
 cMainGame::~cMainGame()
 {
+	SAFE_DELETE(m_pCube);
+	SAFE_DELETE(m_pGrid);
+	SAFE_DELETE(m_pCamera);
 	g_pDeviceManager->Destroy();
 }
 
 void cMainGame::Init()
 {
 
-	D3DXVECTOR3	vEye(0, 5, -5);
-	D3DXVECTOR3	vLookAt(0, 0, 0);
-	D3DXVECTOR3	vUp(0, 1, 0);
-	D3DXMATRIX matView;
-	D3DXMatrixLookAtLH(&matView, &vEye, &vLookAt, &vUp);
-	g_pD3DDevice->SetTransform(D3DTS_VIEW, &matView);
+	/*
+	ST_PC_VERTEXT v;
+	v.p = D3DXVECTOR3(0, 0, 0);
+	v.c = D3DCOLOR_XRGB(255, 0, 0);
 
-	RECT rc;
-	GetClientRect(g_hWnd, &rc);
+	m_vecVertex.push_back(v);
 
-	D3DXMATRIX matProj;
-	D3DXMatrixPerspectiveFovLH(&matProj,
-		D3DX_PI / 4.0f,
-		rc.right / (float)rc.bottom,
-		1.0f,
-		1000.0f);
-	g_pD3DDevice->SetTransform(D3DTS_PROJECTION, &matProj);
+	v.p = D3DXVECTOR3(0, 1, 0);
+	v.c = D3DCOLOR_XRGB(0, 255, 0);
 
-	tk = new tankMove;
-	tk->Init();
+	m_vecVertex.push_back(v);
+
+	v.p = D3DXVECTOR3(1, 0, 0);
+	v.c = D3DCOLOR_XRGB(0, 0, 255);
+
+	m_vecVertex.push_back(v);*/
+
+	m_pCamera = new cCamera;
+	m_pCamera->Init();
+
+	m_pCube = new cCube;
+	m_pCube->Init();
+
+	m_pGrid = new cGrid;
+	m_pGrid->Init();
 
 	g_pD3DDevice->SetRenderState(D3DRS_LIGHTING, false);
-
 }
 
 void cMainGame::Update()
 {
-	tk->Update();
+	if (m_pCamera)
+	{
+		m_pCamera->Update();
+	}
+
+	if (m_pCube)
+	{
+		m_pCube->Update();
+	}
 }
 
 void cMainGame::Render()
@@ -51,21 +71,41 @@ void cMainGame::Render()
 	g_pD3DDevice->Clear(NULL,
 		NULL,
 		D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER,
-		D3DCOLOR_XRGB(155, 155, 155),
+		D3DCOLOR_XRGB(0, 0, 0),
 		1.0f, 0);
 
 	g_pD3DDevice->BeginScene();
 
-	tk->Render();
+	// Draw
+	/*D3DXMATRIXA16	matWorld;
+	D3DXMatrixIdentity(&matWorld);
+	g_pD3DDevice->SetTransform(D3DTS_WORLD, &matWorld);
+	g_pD3DDevice->SetFVF(ST_PC_VERTEXT::FVF);
+
+	g_pD3DDevice->DrawPrimitiveUP(D3DPT_TRIANGLELIST,
+	m_vecVertex.size() / 3,
+	&m_vecVertex[0],
+	sizeof(ST_PC_VERTEXT));*/
+
+	if (m_pCube)
+	{
+		m_pCube->Render();
+	}
+
+	if (m_pGrid)
+	{
+		m_pGrid->Render();
+	}
 
 	g_pD3DDevice->EndScene();
 
 	g_pD3DDevice->Present(NULL, NULL, NULL, NULL);
 }
 
-void cMainGame::Relase()
+void cMainGame::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	tk->Release();
-	SAFE_DELETE(tk);
+	if (m_pCamera)
+	{
+		m_pCamera->WndProc(hWnd, message, wParam, lParam);
+	}
 }
-
