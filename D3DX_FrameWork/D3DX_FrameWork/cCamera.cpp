@@ -24,7 +24,7 @@ void cCamera::Init()
 	RECT rc;
 	GetClientRect(g_hWnd, &rc);
 
-	D3DXMATRIXA16 matProj;
+	D3DXMATRIX matProj;
 	D3DXMatrixPerspectiveFovLH(&matProj,
 		D3DX_PI / 4.0f,
 		rc.right / (float)rc.bottom,
@@ -34,15 +34,15 @@ void cCamera::Init()
 }
 void cCamera::Update()
 {
-	D3DXMATRIXA16 matR, matRX, matRY;
+	D3DXMATRIX matR, matRX, matRY;
 	D3DXMatrixRotationX(&matRX, m_vCamRotAngle.x);
 	D3DXMatrixRotationY(&matRY, m_vCamRotAngle.y);
 	matR = matRX * matRY;
 
-	//m_vEye = D3DXVECTOR3(0, 0, -m_fCameraDistance);
-	//D3DXVec3TransformCoord(&m_vEye, &m_vEye, &matR);
+	m_vEye = D3DXVECTOR3(0, 0, -m_fCameraDistance);
+	D3DXVec3TransformCoord(&m_vEye, &m_vEye, &matR);
 
-	D3DXMATRIXA16 matView;
+	D3DXMATRIX matView;
 	D3DXMatrixLookAtLH(&matView, &m_vEye, &m_vLookAt, &m_vUp);
 	g_pD3DDevice->SetTransform(D3DTS_VIEW, &matView);
 }

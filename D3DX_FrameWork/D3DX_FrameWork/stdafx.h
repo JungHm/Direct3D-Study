@@ -44,12 +44,12 @@ public:\
 #define SAFE_DELETE(p) { if(p) delete p; p = NULL; }
 #define SAFE_RELEASE(p) { if(p) p->Release(); p = NULL; }
 
-
-#include "cDeviceManager.h"
-
 struct ST_PC_VERTEXT
 {
 	D3DXVECTOR3	p;
 	D3DCOLOR	c;
 	enum { FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE };
 };
+
+#include "cDeviceManager.h"
+

@@ -56,7 +56,7 @@ void cGrid::Init(int nNumHalfTile, float fInterval)
 }
 void cGrid::Render()
 {
-	D3DXMATRIXA16 matWorld;
+	D3DXMATRIX matWorld;
 	D3DXMatrixIdentity(&matWorld);
 	g_pD3DDevice->SetTransform(D3DTS_WORLD, &matWorld);
 

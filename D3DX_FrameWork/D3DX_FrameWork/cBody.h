@@ -1,13 +1,17 @@
 #pragma once
+#include "cCubeMake.h"
 
-class cCube;
-
-class cBody
+class cBody : public cCubeMake
 {
-private:
-	cCube* cube;
+protected:
+
 public:
 	cBody();
 	~cBody();
+
+
+	
+	void Adjust();
+
 };
 

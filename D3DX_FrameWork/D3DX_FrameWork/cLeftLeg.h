@@ -1,8 +1,11 @@
 #pragma once
-class cLeftLeg
+#include "cBody.h"
+class cLeftLeg : public cBody
 {
 public:
 	cLeftLeg();
 	~cLeftLeg();
+
+	void Adjust();
 };
 

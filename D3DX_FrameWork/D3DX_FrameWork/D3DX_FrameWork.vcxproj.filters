@@ -69,10 +69,10 @@
     <ClInclude Include="cRightLeg.h">
       <Filter>소스 파일\cubeHuman</Filter>
     </ClInclude>
-    <ClInclude Include="cHead.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="cCubeMake.h">
+      <Filter>소스 파일\cubeHuman</Filter>
+    </ClInclude>
+    <ClInclude Include="cHead.h">
       <Filter>소스 파일\cubeHuman</Filter>
     </ClInclude>
   </ItemGroup>
@@ -113,10 +113,10 @@
     <ClCompile Include="cRightLeg.cpp">
       <Filter>소스 파일\cubeHuman</Filter>
     </ClCompile>
-    <ClCompile Include="cHead.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="cCubeMake.cpp">
+      <Filter>소스 파일\cubeHuman</Filter>
+    </ClCompile>
+    <ClCompile Include="cHead.cpp">
       <Filter>소스 파일\cubeHuman</Filter>
     </ClCompile>
   </ItemGroup>

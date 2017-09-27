@@ -1,8 +1,14 @@
 #pragma once
-class cHead
+#include "cBody.h"
+
+class cHead : public cBody
 {
+private:
+
 public:
 	cHead();
 	~cHead();
+
+	void Adjust();
 };
 

@@ -7,6 +7,7 @@ cCube::cCube()
 	, m_vPosition(0, 0, 0)
 	, m_vDirection(0, 0, 1)
 {
+	D3DXMatrixIdentity(&matScale);
 }
 
 
@@ -94,7 +95,7 @@ void cCube::Update()
 
 	D3DXMatrixIdentity(&m_matWorld);
 
-	D3DXMATRIXA16	matR, matT;
+	D3DXMATRIX	matR, matT;
 	D3DXMatrixRotationY(&matR, m_fRotY);
 	m_vDirection = D3DXVECTOR3(0, 0, 1);
 	D3DXVec3TransformNormal(&m_vDirection, &m_vDirection, &matR);
