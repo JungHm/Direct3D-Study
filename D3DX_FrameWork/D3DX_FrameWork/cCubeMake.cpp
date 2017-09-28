@@ -110,29 +110,25 @@ void cCubeMake::Update()
 	{
 		m_matWorldTM *= (*m_pParentWorldTM);
 	}
-	
+
 	for each (auto p in m_vecChild)
 	{
-		if (p->m_vecChild.size() != 0)
+		for each(auto c in p->m_vecChild)
 		{
-			//auto c = p->m_vecChild;
-			for each(auto c in p->m_vecChild)
+			switch (motionNum)
 			{
-				switch (motionNum)
-				{
-				case IDLE:
-					c->IdleMotion();
-					break;
-				case MOVE:
-					c->MoveMotion();
-					break;
-				default:
-					D3DXMatrixIdentity(&matMoveT);
-					D3DXMatrixIdentity(&matOriginT);
-					break;
-				}
-				c->Update();
+			case IDLE:
+				c->IdleMotion();
+				break;
+			case MOVE:
+				c->MoveMotion();
+				break;
+			default:
+				D3DXMatrixIdentity(&matMoveT);
+				D3DXMatrixIdentity(&matOriginT);
+				break;
 			}
+			c->Update();
 		}
 		switch (motionNum)
 		{
