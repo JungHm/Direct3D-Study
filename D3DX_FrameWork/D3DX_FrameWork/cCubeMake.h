@@ -1,4 +1,9 @@
 #pragma once
+enum MOTION
+{
+	IDLE=1,
+	MOVE
+};
 class cCubeMake
 {
 protected:
@@ -6,14 +11,15 @@ protected:
 
 	D3DXMATRIXA16				m_matLocalTM;
 	D3DXMATRIXA16				m_matWorldTM;
+	D3DXMATRIXA16	matR, matT;
+	D3DXMATRIXA16	matMotionR;
 
 	D3DXVECTOR3					m_vLocalPos;
-
 
 	std::vector<cCubeMake*>			m_vecChild;
 
 	SYNTHESIZE(D3DXMATRIXA16*, m_pParentWorldTM, ParentWorldTM)
-
+	SYNTHESIZE(int, motionNum, cMotion)
 public:
 	cCubeMake();
 	virtual ~cCubeMake();
@@ -24,5 +30,8 @@ public:
 	virtual void Init();
 	void Update();
 	void Render();
+
+	virtual void IdleMotion();
+	virtual void MoveMotion();
 };
 

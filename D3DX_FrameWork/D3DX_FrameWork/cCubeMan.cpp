@@ -80,9 +80,12 @@ void cCubeMan::Init()
 }
 void cCubeMan::Update()
 {
+	m_pRoot->SetcMotion(IDLE);
+
 	if (GetKeyState('A') & 0x8000)
 	{
 		m_fRotY -= 0.1f;
+
 	}
 	if (GetKeyState('D') & 0x8000)
 	{
@@ -92,12 +95,19 @@ void cCubeMan::Update()
 	if (GetKeyState('W') & 0x8000)
 	{
 		m_vPosition = m_vPosition + (m_vDirection * 0.1f);
+		m_pRoot->SetcMotion(MOVE);
 	}
+
 	if (GetKeyState('S') & 0x8000)
 	{
 		m_vPosition = m_vPosition - (m_vDirection * 0.1f);
+		m_pRoot->SetcMotion(MOVE);
+
 	}
 
+
+	
+	
 	D3DXMATRIXA16	matR, matT;
 	D3DXMatrixRotationY(&matR, m_fRotY);
 	m_vDirection = D3DXVECTOR3(0, 0, 1);

@@ -5,15 +5,17 @@
 cCubeMake::cCubeMake()
 	: m_vLocalPos(0, 0, 0)
 	, m_pParentWorldTM(NULL)
+	, motionNum(0)
 {
 	D3DXMatrixIdentity(&m_matLocalTM);
 	D3DXMatrixIdentity(&m_matWorldTM);
+
+	D3DXMatrixIdentity(&matR);
 }
 
 
 cCubeMake::~cCubeMake()
 {
-	int a = 0;
 }
 
 
@@ -93,11 +95,13 @@ void cCubeMake::Update()
 {
 	D3DXMatrixIdentity(&m_matWorldTM);
 
-	D3DXMATRIXA16	matR, matT;
-	D3DXMatrixIdentity(&matR);
+	
+	//D3DXMatrixIdentity(&matR);
 	D3DXMatrixIdentity(&matT);
+	
 	D3DXMatrixTranslation(&matT, m_vLocalPos.x, m_vLocalPos.y, m_vLocalPos.z);
 
+	
 	m_matLocalTM = matR * matT;
 	m_matWorldTM = m_matLocalTM;
 	if (m_pParentWorldTM)
@@ -107,6 +111,18 @@ void cCubeMake::Update()
 
 	for each (auto p in m_vecChild)
 	{
+		switch (motionNum)
+		{
+		case IDLE:
+			p->IdleMotion();
+			break;
+		case MOVE:
+			p->MoveMotion();
+			break;
+		default:
+			D3DXMatrixIdentity(&matMotionR);
+			break;
+		}
 		p->Update();
 	}
 }
@@ -123,4 +139,14 @@ void cCubeMake::Render()
 	{
 		p->Render();
 	}
+}
+
+void cCubeMake::IdleMotion()
+{
+	D3DXMatrixIdentity(&matR);
+}
+
+void cCubeMake::MoveMotion()
+{
+	D3DXMatrixIdentity(&matR);
 }
