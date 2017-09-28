@@ -1,14 +1,13 @@
 #pragma once
-#include "cBody.h"
+#include "cCubeMake.h"
 
-class cHead : public cBody
+class cHead :
+	public cCubeMake
 {
-private:
-
 public:
 	cHead();
 	~cHead();
 
-	void Adjust();
+	virtual void Init() override;
 };
 

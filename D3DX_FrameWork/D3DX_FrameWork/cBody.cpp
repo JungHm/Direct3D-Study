@@ -4,7 +4,6 @@
 
 cBody::cBody()
 {
-	Init(D3DXVECTOR3(1, 1, 1));
 }
 
 
@@ -12,11 +11,18 @@ cBody::~cBody()
 {
 }
 
-void cBody::Adjust()
+void cBody::Init()
 {
-	D3DXMATRIX f_matS;
+	cCubeMake::Init();
 
-	D3DXMatrixScaling(&f_matS, 1.2f, 1.6f, 1.0f);
-	D3DXMatrixIdentity(&m_matWorld);
-	t_matS = f_matS;
+	D3DXMATRIXA16 matS, matT, matWorld;
+	D3DXMatrixScaling(&matS, 0.8f, 1.2f, 0.4f);
+	D3DXMatrixTranslation(&matT, 0.0f, 0.0f, 0.0f);
+
+	matWorld = matS * matT;
+
+	for (int i = 0; i < m_vecVertex.size(); i++)
+	{
+		D3DXVec3TransformCoord(&m_vecVertex[i].p, &m_vecVertex[i].p, &matWorld);
+	}
 }

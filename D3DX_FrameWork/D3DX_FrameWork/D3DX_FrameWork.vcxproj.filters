@@ -75,6 +75,9 @@
     <ClInclude Include="cHead.h">
       <Filter>소스 파일\cubeHuman</Filter>
     </ClInclude>
+    <ClInclude Include="cCubeMan.h">
+      <Filter>소스 파일\cubeHuman</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -117,6 +120,9 @@
       <Filter>소스 파일\cubeHuman</Filter>
     </ClCompile>
     <ClCompile Include="cHead.cpp">
+      <Filter>소스 파일\cubeHuman</Filter>
+    </ClCompile>
+    <ClCompile Include="cCubeMan.cpp">
       <Filter>소스 파일\cubeHuman</Filter>
     </ClCompile>
   </ItemGroup>

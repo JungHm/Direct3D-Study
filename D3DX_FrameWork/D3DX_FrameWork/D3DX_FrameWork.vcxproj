@@ -147,6 +147,7 @@
     <ClInclude Include="cCamera.h" />
     <ClInclude Include="cCube.h" />
     <ClInclude Include="cCubeMake.h" />
+    <ClInclude Include="cCubeMan.h" />
     <ClInclude Include="cDeviceManager.h" />
     <ClInclude Include="cGrid.h" />
     <ClInclude Include="cHead.h" />
@@ -165,6 +166,7 @@
     <ClCompile Include="cCamera.cpp" />
     <ClCompile Include="cCube.cpp" />
     <ClCompile Include="cCubeMake.cpp" />
+    <ClCompile Include="cCubeMan.cpp" />
     <ClCompile Include="cDeviceManager.cpp" />
     <ClCompile Include="cGrid.cpp" />
     <ClCompile Include="cHead.cpp" />

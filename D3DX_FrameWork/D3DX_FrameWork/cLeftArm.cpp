@@ -4,7 +4,6 @@
 
 cLeftArm::cLeftArm()
 {
-	Init(D3DXVECTOR3(-1.8f, 1.f, 1.f));
 }
 
 
@@ -12,12 +11,19 @@ cLeftArm::~cLeftArm()
 {
 }
 
-void cLeftArm::Adjust()
+
+void cLeftArm::Init()
 {
-	D3DXMATRIX f_matS;
+	cCubeMake::Init();
 
-	D3DXMatrixScaling(&f_matS, 0.5f, 1.2f, 0.5f);
-	D3DXMatrixIdentity(&m_matWorld);
-	t_matS = f_matS;
+	D3DXMATRIXA16 matS, matT, matWorld;
+	D3DXMatrixScaling(&matS, 0.4f, 1.2f, 0.4f);
+	D3DXMatrixTranslation(&matT, -1.2f, 0.0f, 0.0f);
 
+	matWorld = matS * matT;
+
+	for (int i = 0; i < m_vecVertex.size(); i++)
+	{
+		D3DXVec3TransformCoord(&m_vecVertex[i].p, &m_vecVertex[i].p, &matWorld);
+	}
 }

@@ -1,24 +1,28 @@
 #pragma once
-
 class cCubeMake
 {
 protected:
 	std::vector<ST_PC_VERTEXT>	m_vecVertex;
-	D3DXMATRIX				m_matWorld;
-	float						m_fRotY;
-	D3DXVECTOR3					m_vPosition;
-	D3DXVECTOR3					m_vDirection;
 
-	D3DXMATRIX				t_matS;
+	D3DXMATRIXA16				m_matLocalTM;
+	D3DXMATRIXA16				m_matWorldTM;
+
+	D3DXVECTOR3					m_vLocalPos;
+
+
+	std::vector<cCubeMake*>			m_vecChild;
+
+	SYNTHESIZE(D3DXMATRIXA16*, m_pParentWorldTM, ParentWorldTM)
+
 public:
 	cCubeMake();
-	~cCubeMake();
+	virtual ~cCubeMake();
 
-	virtual void Init(D3DXVECTOR3 temp);
-	virtual void Adjust();
-	virtual void Update();
-	virtual void Render();
+	void AddChild(cCubeMake* pChild);
+	void Destroy();
 
-	virtual void VertexSet(int num, D3DXVECTOR3 temp, D3DCOLOR c);
+	virtual void Init();
+	void Update();
+	void Render();
 };
 

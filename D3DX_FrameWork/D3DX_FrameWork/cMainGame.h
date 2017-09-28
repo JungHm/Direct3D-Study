@@ -1,10 +1,9 @@
 #pragma once
 
+class cCubeMake;
 class cGrid;
 class cCamera;
-//class cCube;
-class cBody;
-class cHead; class cLeftArm; class cRightArm; class cLeftLeg; class cRightLeg;
+class cCubeMan;
 
 class cMainGame
 {
@@ -12,15 +11,8 @@ private:
 	std::vector<ST_PC_VERTEXT>	m_vecVertex;
 	cGrid*		m_pGrid;
 	cCamera*	m_pCamera;
-	//cCube
-	cBody*		m_pBody;
-	cHead*		m_pHead;
-	cLeftArm* m_pLeftArm;
-	cRightArm* m_pRightArm;
-	cLeftLeg* m_pLeftLeg;
-	cRightLeg* m_pRightLeg;
+	cCubeMan*	m_pCubeMan;
 
-private://logic
 	bool GridOn;
 public:
 	cMainGame();

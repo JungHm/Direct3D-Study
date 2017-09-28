@@ -1,11 +1,12 @@
 #pragma once
-#include "cBody.h"
-class cLeftLeg : public cBody
+#include "cCubeMake.h"
+class cLeftLeg :
+	public cCubeMake
 {
 public:
 	cLeftLeg();
 	~cLeftLeg();
 
-	void Adjust();
+	virtual void Init() override;
 };
 
