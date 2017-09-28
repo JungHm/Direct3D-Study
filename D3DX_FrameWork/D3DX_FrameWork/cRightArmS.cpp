@@ -1,25 +1,24 @@
 #include "stdafx.h"
-#include "cLeftArm.h"
+#include "cRightArmS.h"
 
 
-cLeftArm::cLeftArm()
+cRightArmS::cRightArmS()
 {
 }
 
 
-cLeftArm::~cLeftArm()
+cRightArmS::~cRightArmS()
 {
 }
 
-
-void cLeftArm::Init()
+void cRightArmS::Init()
 {
 	cCubeMake::Init();
 
 	D3DXMATRIXA16 matS, matT, matWorld;
 	D3DXMatrixScaling(&matS, 0.4f, 0.6f, 0.4f);
-	D3DXMatrixTranslation(&matT, -1.2f, 0.6f, 0.0f);
-
+	D3DXMatrixTranslation(&matT, 1.2f, -0.6f, 0.0f);
+	D3DXMatrixIdentity(&matWorld);
 	matWorld = matS * matT;
 
 	for (int i = 0; i < m_vecVertex.size(); i++)

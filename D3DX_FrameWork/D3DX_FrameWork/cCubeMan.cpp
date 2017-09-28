@@ -1,6 +1,16 @@
 #include "stdafx.h"
 #include "cCubeMan.h"
 
+#include "cBody.h"
+#include "cHead.h"
+#include "cLeftArm.h"
+#include "cLeftArmS.h"
+#include "cRightArm.h"
+#include "cRightArmS.h"
+#include "cLeftLeg.h"
+#include "cRightLeg.h"
+#include "cRightLegS.h"
+#include "cLeftLegS.h"
 
 
 
@@ -31,18 +41,42 @@ void cCubeMan::Init()
 	cLeftArm* pLeftArm = new cLeftArm;
 	pLeftArm->Init();
 	m_pRoot->AddChild(pLeftArm);
+	m_pRoot = pLeftArm;//À­ÆÈÀ» ·çÆ®·Î
+
+	cLeftArmS* pLeftArmS = new cLeftArmS;
+	pLeftArmS->Init();
+	m_pRoot->AddChild(pLeftArmS);//¹ØÆÈºÎ¸ð¸¦ À­ÆÈ·Î
+	m_pRoot = pBody;//´Ù½Ã ¹Ùµð¸¦ ·çÆ®
 
 	cRightArm* pRightArm = new cRightArm;
 	pRightArm->Init();
 	m_pRoot->AddChild(pRightArm);
+	m_pRoot = pRightArm;//À­ÆÈÀ» ·çÆ®·Î
+
+	cRightArmS* pRightArmS = new cRightArmS;
+	pRightArmS->Init();
+	m_pRoot->AddChild(pRightArmS);
+	m_pRoot = pBody;//´Ù½Ã ¹Ùµð¸¦ ·çÆ®
 
 	cLeftLeg* pLeftLeg = new cLeftLeg;
 	pLeftLeg->Init();
 	m_pRoot->AddChild(pLeftLeg);
+	m_pRoot = pLeftLeg;
+
+	cLeftLegS* pLeftLegS = new cLeftLegS;
+	pLeftLegS->Init();
+	m_pRoot->AddChild(pLeftLegS);
+	m_pRoot = pBody;
 
 	cRightLeg* pRightLeg = new cRightLeg;
 	pRightLeg->Init();
 	m_pRoot->AddChild(pRightLeg);
+	m_pRoot = pRightLeg;
+
+	cRightLegS* pRightLegS = new cRightLegS;
+	pRightLegS->Init();
+	m_pRoot->AddChild(pRightLegS);
+	m_pRoot = pBody;
 }
 void cCubeMan::Update()
 {

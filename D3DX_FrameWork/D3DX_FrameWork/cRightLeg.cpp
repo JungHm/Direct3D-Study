@@ -17,8 +17,8 @@ void cRightLeg::Init()
 	cCubeMake::Init();
 
 	D3DXMATRIXA16 matS, matT, matWorld;
-	D3DXMatrixScaling(&matS, 0.4f, 1.2f, 0.4f);
-	D3DXMatrixTranslation(&matT, 0.4f, -2.4f, 0.0f);
+	D3DXMatrixScaling(&matS, 0.4f, 0.6f, 0.4f);
+	D3DXMatrixTranslation(&matT, 0.4f, -1.8f, 0.0f);
 	D3DXMatrixIdentity(&matWorld);
 	matWorld = matS * matT;
 

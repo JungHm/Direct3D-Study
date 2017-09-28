@@ -1,12 +1,6 @@
 #pragma once
 class cCubeMake;
 
-#include "cBody.h"
-#include "cHead.h"
-#include "cLeftArm.h"
-#include "cRightArm.h"
-#include "cLeftLeg.h"
-#include "cRightLeg.h"
 
 class cCubeMan
 {
