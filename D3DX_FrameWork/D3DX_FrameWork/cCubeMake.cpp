@@ -13,44 +13,84 @@ cCubeMake::cCubeMake()
 
 cCubeMake::~cCubeMake()
 {
+	int a = 0;
 }
 
-void cCubeMake::Init(D3DXVECTOR3 temp)
+
+void cCubeMake::AddChild(cCubeMake* pChild)
 {
-	D3DXMatrixIdentity(&t_matS);
-	VertexSet(0, temp, D3DCOLOR_XRGB(255, 0, 0)); VertexSet(1, temp, D3DCOLOR_XRGB(255, 0, 0)); VertexSet(2, temp, D3DCOLOR_XRGB(255, 0, 0));
-	VertexSet(0, temp, D3DCOLOR_XRGB(255, 0, 0)); VertexSet(2, temp, D3DCOLOR_XRGB(255, 0, 0)); VertexSet(3, temp, D3DCOLOR_XRGB(255, 0, 0));
-
-	VertexSet(1, temp, D3DCOLOR_XRGB(0, 0, 0)); VertexSet(0, temp, D3DCOLOR_XRGB(0, 0, 0)); VertexSet(4, temp, D3DCOLOR_XRGB(0, 0, 0));
-	VertexSet(1, temp, D3DCOLOR_XRGB(0, 0, 0)); VertexSet(4, temp, D3DCOLOR_XRGB(0, 0, 0)); VertexSet(5, temp, D3DCOLOR_XRGB(0, 0, 0));
-
-	VertexSet(2, temp, D3DCOLOR_XRGB(0, 255, 0)); VertexSet(6, temp, D3DCOLOR_XRGB(0, 255, 0)); VertexSet(7, temp, D3DCOLOR_XRGB(0, 255, 0));
-	VertexSet(2, temp, D3DCOLOR_XRGB(0, 255, 0)); VertexSet(7, temp, D3DCOLOR_XRGB(0, 255, 0)); VertexSet(3, temp, D3DCOLOR_XRGB(0, 255, 0));
-
-	VertexSet(1, temp, D3DCOLOR_XRGB(0, 0, 155)); VertexSet(5, temp, D3DCOLOR_XRGB(0, 0, 155)); VertexSet(6, temp, D3DCOLOR_XRGB(0, 0, 155));
-	VertexSet(1, temp, D3DCOLOR_XRGB(0, 0, 155)); VertexSet(6, temp, D3DCOLOR_XRGB(0, 0, 155)); VertexSet(2, temp, D3DCOLOR_XRGB(0, 0, 155));
-
-	VertexSet(0, temp, D3DCOLOR_XRGB(255, 0, 255)); VertexSet(3, temp, D3DCOLOR_XRGB(255, 0, 255)); VertexSet(7, temp, D3DCOLOR_XRGB(255, 0, 255));
-	VertexSet(0, temp, D3DCOLOR_XRGB(255, 0, 255)); VertexSet(7, temp, D3DCOLOR_XRGB(255, 0, 255)); VertexSet(4, temp, D3DCOLOR_XRGB(255, 0, 255));
-
-	VertexSet(5, temp, D3DCOLOR_XRGB(255, 255, 255)); VertexSet(4, temp, D3DCOLOR_XRGB(255, 255, 255)); VertexSet(7, temp, D3DCOLOR_XRGB(255, 255, 255));
-	VertexSet(5, temp, D3DCOLOR_XRGB(255, 255, 255)); VertexSet(7, temp, D3DCOLOR_XRGB(255, 255, 255)); VertexSet(6, temp, D3DCOLOR_XRGB(255, 255, 255));
-
-	Adjust();
+	pChild->m_pParentWorldTM = &m_matWorldTM;
+	m_vecChild.push_back(pChild);
 }
-void cCubeMake::Adjust()
+void cCubeMake::Destroy()
 {
+	for each (auto p in m_vecChild)
+	{
+		p->Destroy();
+	}
+	delete this;
+}
+
+void cCubeMake::Init()
+{
+	ST_PC_VERTEXT	v;
+
+	v.c = D3DCOLOR_XRGB(rand() % 256, rand() % 256, rand() % 256);
+	v.p = D3DXVECTOR3(-1.0f, -1.0f, -1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(-1.0f, 1.0f, -1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(1.0f, 1.0f, -1.0f); m_vecVertex.push_back(v);
+
+	v.p = D3DXVECTOR3(-1.0f, -1.0f, -1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(1.0f, 1.0f, -1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(1.0f, -1.0f, -1.0f); m_vecVertex.push_back(v);
+
+	v.c = D3DCOLOR_XRGB(rand() % 256, rand() % 256, rand() % 256);
+	v.p = D3DXVECTOR3(-1.0f, -1.0f, 1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(1.0f, 1.0f, 1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(-1.0f, 1.0f, 1.0f); m_vecVertex.push_back(v);
+
+	v.p = D3DXVECTOR3(-1.0f, -1.0f, 1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(1.0f, -1.0f, 1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(1.0f, 1.0f, 1.0f); m_vecVertex.push_back(v);
+
+	v.c = D3DCOLOR_XRGB(rand() % 256, rand() % 256, rand() % 256);
+	v.p = D3DXVECTOR3(-1.0f, -1.0f, 1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(-1.0f, 1.0f, 1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(-1.0f, 1.0f, -1.0f); m_vecVertex.push_back(v);
+
+	v.p = D3DXVECTOR3(-1.0f, -1.0f, 1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(-1.0f, 1.0f, -1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(-1.0f, -1.0f, -1.0f); m_vecVertex.push_back(v);
+
+	v.c = D3DCOLOR_XRGB(rand() % 256, rand() % 256, rand() % 256);
+	v.p = D3DXVECTOR3(1.0f, -1.0f, -1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(1.0f, 1.0f, -1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(1.0f, 1.0f, 1.0f); m_vecVertex.push_back(v);
+
+	v.p = D3DXVECTOR3(1.0f, -1.0f, -1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(1.0f, 1.0f, 1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(1.0f, -1.0f, 1.0f); m_vecVertex.push_back(v);
+
+	v.c = D3DCOLOR_XRGB(rand() % 256, rand() % 256, rand() % 256);
+	v.p = D3DXVECTOR3(-1.0f, 1.0f, -1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(-1.0f, 1.0f, 1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(1.0f, 1.0f, 1.0f); m_vecVertex.push_back(v);
+
+	v.p = D3DXVECTOR3(-1.0f, 1.0f, -1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(1.0f, 1.0f, 1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(1.0f, 1.0f, -1.0f); m_vecVertex.push_back(v);
+
+	v.c = D3DCOLOR_XRGB(rand() % 256, rand() % 256, rand() % 256);
+	v.p = D3DXVECTOR3(-1.0f, -1.0f, 1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(-1.0f, -1.0f, -1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(1.0f, -1.0f, -1.0f); m_vecVertex.push_back(v);
+
+	v.p = D3DXVECTOR3(-1.0f, -1.0f, 1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(1.0f, -1.0f, -1.0f); m_vecVertex.push_back(v);
+	v.p = D3DXVECTOR3(1.0f, -1.0f, 1.0f); m_vecVertex.push_back(v);
 }
 void cCubeMake::Update()
 {
-	if (GetKeyState('A') & 0x8000)
-	{
-		m_fRotY -= 0.1f;
-	}
-	if (GetKeyState('D') & 0x8000)
-	{
-		m_fRotY += 0.1f;
-	}
 	D3DXMatrixIdentity(&m_matWorldTM);
 
 	D3DXMATRIXA16	matR, matT;
@@ -79,21 +119,8 @@ void cCubeMake::Render()
 		&m_vecVertex[0],
 		sizeof(ST_PC_VERTEXT));
 
+	for each (auto p in m_vecChild)
 	{
-		v.p = D3DXVECTOR3(temp.x, temp.y - 2.f, temp.z - 2.f);
-		v.c = c;
-		m_vecVertex.push_back(v);
-	}
-	if (num == 4)
-	{
-		v.p = D3DXVECTOR3(temp.x - 2.f, temp.y - 2.f, temp.z);
-		v.c = c;
-		m_vecVertex.push_back(v);
-	}
-	if (num == 5)
-	{
-		v.p = D3DXVECTOR3(temp.x - 2.f, temp.y, temp.z);
-		v.c = c;
-		m_vecVertex.push_back(v);
+		p->Render();
 	}
 }
