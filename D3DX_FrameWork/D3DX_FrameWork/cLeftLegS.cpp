@@ -3,6 +3,10 @@
 
 
 cLeftLegS::cLeftLegS()
+	: angleY(0.0f)
+	, angleMax(0.0f)
+	, angleMin(-0.3f)
+	, angleRe(false)
 {
 }
 
@@ -25,3 +29,24 @@ void cLeftLegS::Init()
 		D3DXVec3TransformCoord(&m_vecVertex[i].p, &m_vecVertex[i].p, &matWorld);
 	}
 }
+
+//void cLeftLegS::MoveMotion()
+//{
+//	D3DXMatrixIdentity(&matR);
+//	D3DXMatrixIdentity(&matMoveT);
+//
+//	if (angleY > angleMax)
+//	{
+//		angleRe = false;
+//	}
+//	else if (angleY < angleMin)
+//	{
+//		angleRe = true;
+//	}
+//
+//	if (angleRe) angleY += 0.02f;
+//	else angleY -= 0.02f;
+//	D3DXMatrixTranslation(&matMoveT, 0, -0.6, -0.1);
+//	D3DXMatrixTranslation(&matOriginT, 0, 0.6, 0.1);
+//	D3DXMatrixRotationX(&matR, angleY);
+//}

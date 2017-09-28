@@ -12,7 +12,7 @@ protected:
 	D3DXMATRIXA16				m_matLocalTM;
 	D3DXMATRIXA16				m_matWorldTM;
 	D3DXMATRIXA16	matR, matT;
-	D3DXMATRIXA16	matMotionR;
+	D3DXMATRIXA16	matMoveT, matOriginT;
 
 	D3DXVECTOR3					m_vLocalPos;
 
