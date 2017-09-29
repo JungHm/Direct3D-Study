@@ -13,7 +13,7 @@ protected:
 	D3DXMATRIXA16				m_matWorldTM;
 	D3DXMATRIXA16	matR, matT;
 	D3DXMATRIXA16	matMoveT, matOriginT;
-
+	
 	D3DXVECTOR3					m_vLocalPos;
 
 	std::vector<cCubeMake*>			m_vecChild;
@@ -33,5 +33,15 @@ public:
 
 	virtual void IdleMotion();
 	virtual void MoveMotion();
+
+	void* operator new(size_t i)
+	{
+		return _mm_malloc(i, 16);
+	}
+
+	void operator delete(void* p)
+	{
+		_mm_free(p);
+	}
 };
 

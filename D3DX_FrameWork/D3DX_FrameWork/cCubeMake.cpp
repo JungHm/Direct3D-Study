@@ -110,7 +110,7 @@ void cCubeMake::Update()
 	{
 		m_matWorldTM *= (*m_pParentWorldTM);
 	}
-
+	
 	for each (auto p in m_vecChild)
 	{
 		for each(auto c in p->m_vecChild)
@@ -131,7 +131,7 @@ void cCubeMake::Update()
 			c->Update();
 		}
 		switch (motionNum)
-		{
+		{ 
 		case IDLE:
 			p->IdleMotion();
 			break;

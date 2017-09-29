@@ -25,7 +25,7 @@ void cHead::Init()
 	D3DXMatrixIdentity(&matWorld);
 	matWorld = matS * matT;
 
-	for (int i = 0; i < m_vecVertex.size(); i++)
+	for (UINT i = 0; i < m_vecVertex.size(); i++)
 	{
 		D3DXVec3TransformCoord(&m_vecVertex[i].p, &m_vecVertex[i].p, &matWorld);
 	}

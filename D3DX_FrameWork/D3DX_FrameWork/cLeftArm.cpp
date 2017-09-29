@@ -26,7 +26,7 @@ void cLeftArm::Init()
 
 	matWorld = matS * matT;
 
-	for (int i = 0; i < m_vecVertex.size(); i++)
+	for (UINT i = 0; i < m_vecVertex.size(); i++)
 	{
 		D3DXVec3TransformCoord(&m_vecVertex[i].p, &m_vecVertex[i].p, &matWorld);
 	}
@@ -48,7 +48,7 @@ void cLeftArm::MoveMotion()
 
 	if (angleRe) angleY += 0.04f;
 	else angleY -= 0.04f;
-	D3DXMatrixTranslation(&matMoveT, 0, -0.6, 0);
-	D3DXMatrixTranslation(&matOriginT, 0, 0.6, 0);
+	D3DXMatrixTranslation(&matMoveT, 0.f, -0.6f, 0.f);
+	D3DXMatrixTranslation(&matOriginT, 0.f, 0.6f, 0.f);
 	D3DXMatrixRotationX(&matR, angleY);
 }

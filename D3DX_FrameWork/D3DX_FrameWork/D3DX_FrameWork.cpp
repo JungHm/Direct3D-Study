@@ -173,8 +173,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			POINT ptCurrMouse;
 			ptCurrMouse.x = LOWORD(lParam);
 			ptCurrMouse.y = HIWORD(lParam);
-			float fDeltaX = ptCurrMouse.x - PrevMousePt.x;
-			float fDeltaY = ptCurrMouse.y - PrevMousePt.y;
+			float fDeltaX = (float)ptCurrMouse.x - (float)PrevMousePt.x;
+			float fDeltaY = (float)ptCurrMouse.y - (float)PrevMousePt.y;
 			m_vCamRotAngle.x += (fDeltaY / 100.0f);
 			m_vCamRotAngle.y += (fDeltaX / 100.0f);
 

@@ -41,42 +41,42 @@ void cCubeMan::Init()
 	cLeftArm* pLeftArm = new cLeftArm;
 	pLeftArm->Init();
 	m_pRoot->AddChild(pLeftArm);
-	m_pRoot = pLeftArm;//À­ÆÈÀ» ·çÆ®·Î
+	
 
 	cLeftArmS* pLeftArmS = new cLeftArmS;
 	pLeftArmS->Init();
-	m_pRoot->AddChild(pLeftArmS);//¹ØÆÈºÎ¸ð¸¦ À­ÆÈ·Î
-	m_pRoot = pBody;//´Ù½Ã ¹Ùµð¸¦ ·çÆ®
+	pLeftArm->AddChild(pLeftArmS);//¹ØÆÈºÎ¸ð¸¦ À­ÆÈ·Î
+	
 
 	cRightArm* pRightArm = new cRightArm;
 	pRightArm->Init();
 	m_pRoot->AddChild(pRightArm);
-	m_pRoot = pRightArm;//À­ÆÈÀ» ·çÆ®·Î
+	
 
 	cRightArmS* pRightArmS = new cRightArmS;
 	pRightArmS->Init();
-	m_pRoot->AddChild(pRightArmS);
-	m_pRoot = pBody;//´Ù½Ã ¹Ùµð¸¦ ·çÆ®
+	pRightArm->AddChild(pRightArmS);
+	
 
 	cLeftLeg* pLeftLeg = new cLeftLeg;
 	pLeftLeg->Init();
 	m_pRoot->AddChild(pLeftLeg);
-	m_pRoot = pLeftLeg;
+	
 
 	cLeftLegS* pLeftLegS = new cLeftLegS;
 	pLeftLegS->Init();
-	m_pRoot->AddChild(pLeftLegS);
-	m_pRoot = pBody;
+	pLeftLeg->AddChild(pLeftLegS);
+	
 
 	cRightLeg* pRightLeg = new cRightLeg;
 	pRightLeg->Init();
 	m_pRoot->AddChild(pRightLeg);
-	m_pRoot = pRightLeg;
+	
 
 	cRightLegS* pRightLegS = new cRightLegS;
 	pRightLegS->Init();
-	m_pRoot->AddChild(pRightLegS);
-	m_pRoot = pBody;
+	pRightLeg->AddChild(pRightLegS);
+	
 }
 void cCubeMan::Update()
 {
@@ -85,11 +85,12 @@ void cCubeMan::Update()
 	if (GetKeyState('A') & 0x8000)
 	{
 		m_fRotY -= 0.1f;
-
+		m_pRoot->SetcMotion(0);
 	}
 	if (GetKeyState('D') & 0x8000)
 	{
 		m_fRotY += 0.1f;
+		m_pRoot->SetcMotion(0);
 	}
 
 	if (GetKeyState('W') & 0x8000)
