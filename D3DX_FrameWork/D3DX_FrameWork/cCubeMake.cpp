@@ -118,7 +118,7 @@ void cCubeMake::Update()
 			switch (motionNum)
 			{
 			case IDLE:
-				c->IdleMotion();
+				if (c->Recover()) c->IdleMotion();
 				break;
 			case MOVE:
 				c->MoveMotion();
@@ -133,7 +133,7 @@ void cCubeMake::Update()
 		switch (motionNum)
 		{ 
 		case IDLE:
-			p->IdleMotion();
+			if(p->Recover()) p->IdleMotion();
 			break;
 		case MOVE:
 			p->MoveMotion();
@@ -144,6 +144,7 @@ void cCubeMake::Update()
 			break;
 		}
 		p->Update();
+		
 	}
 }
 void cCubeMake::Render()
@@ -171,4 +172,12 @@ void cCubeMake::MoveMotion()
 	D3DXMatrixIdentity(&matR);
 	D3DXMatrixIdentity(&matMoveT);
 	D3DXMatrixIdentity(&matOriginT);
+}
+
+bool cCubeMake::Recover()
+{
+	/*D3DXMatrixIdentity(&matR);
+	D3DXMatrixIdentity(&matMoveT);
+	D3DXMatrixIdentity(&matOriginT);*/
+	return true;
 }

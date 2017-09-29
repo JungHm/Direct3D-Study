@@ -18,8 +18,8 @@ protected:
 
 	std::vector<cCubeMake*>			m_vecChild;
 
-	SYNTHESIZE(D3DXMATRIXA16*, m_pParentWorldTM, ParentWorldTM)
-	SYNTHESIZE(int, motionNum, cMotion)
+	SYNTHESIZE(D3DXMATRIXA16*, m_pParentWorldTM, ParentWorldTM);
+	SYNTHESIZE(int, motionNum, cMotion);
 public:
 	cCubeMake();
 	virtual ~cCubeMake();
@@ -33,6 +33,7 @@ public:
 
 	virtual void IdleMotion();
 	virtual void MoveMotion();
+	virtual bool Recover();
 
 	void* operator new(size_t i)
 	{

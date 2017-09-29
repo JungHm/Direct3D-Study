@@ -10,6 +10,7 @@ cMainGame::cMainGame()
 	, m_pGrid(NULL)
 	, m_pCamera(NULL)
 	, GridOn(true)
+	, m_pD3DTexture(NULL)
 {
 
 }
@@ -19,11 +20,27 @@ cMainGame::~cMainGame()
 	SAFE_DELETE(m_pGrid);
 	SAFE_DELETE(m_pCamera);
 	SAFE_DELETE(m_pCubeMan);
+	SAFE_RELEASE(m_pD3DTexture);
 	g_pDeviceManager->Destroy();
 }
 
 void cMainGame::Init()
 {
+	ST_PT_VERTEXT t;
+	t.p = D3DXVECTOR3(0, 0, 0);
+	t.t = D3DXVECTOR2(0, 0);
+	m_vecTex.push_back(t);
+
+	t.p = D3DXVECTOR3(0, 1, 0);
+	t.t = D3DXVECTOR2(1, 0);
+	m_vecTex.push_back(t);
+
+	t.p = D3DXVECTOR3(1, 0, 0);
+	t.t = D3DXVECTOR2(0, 1);
+	m_vecTex.push_back(t);
+
+	D3DXCreateTextureFromFile(g_pD3DDevice, L"aa.png", &m_pD3DTexture);
+	
 
 	m_pCamera = new cCamera;
 	m_pCamera->Init();
@@ -65,16 +82,23 @@ void cMainGame::Render()
 		1.0f, 0);
 
 	g_pD3DDevice->BeginScene();
+	g_pD3DDevice->SetFVF(ST_PT_VERTEXT::FVF);
+
+	D3DXMATRIX matWorld;
+	D3DXMatrixIdentity(&matWorld);
+	g_pD3DDevice->SetTransform(D3DTS_WORLD, &matWorld);
+	g_pD3DDevice->SetTexture(0, m_pD3DTexture);
+	g_pD3DDevice->DrawPrimitiveUP(D3DPT_TRIANGLELIST, m_vecTex.size() / 3, &m_vecTex[0], sizeof(ST_PT_VERTEXT));
 
 
-	if (m_pGrid&&GridOn)
-	{
-		m_pGrid->Render();
-	}
-	if (m_pCubeMan)
-	{
-		m_pCubeMan->Render();
-	}
+	//if (m_pGrid&&GridOn)
+	//{
+	//	m_pGrid->Render();
+	//}
+	//if (m_pCubeMan)
+	//{
+	//	m_pCubeMan->Render();
+	//}
 
 
 	g_pD3DDevice->EndScene();

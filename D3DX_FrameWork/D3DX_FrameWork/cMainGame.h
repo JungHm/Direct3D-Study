@@ -14,6 +14,9 @@ private:
 	cCubeMan*	m_pCubeMan;
 
 	bool GridOn;
+
+	std::vector<ST_PT_VERTEXT>	m_vecTex;
+	LPDIRECT3DTEXTURE9 m_pD3DTexture;
 public:
 	cMainGame();
 	~cMainGame();

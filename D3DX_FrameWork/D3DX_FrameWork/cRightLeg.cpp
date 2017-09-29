@@ -52,3 +52,18 @@ void cRightLeg::MoveMotion()
 	D3DXMatrixTranslation(&matOriginT, 0.f, 0.6f, 0.f);
 	D3DXMatrixRotationX(&matR, angleY);
 }
+bool cRightLeg::Recover()
+{
+	D3DXMatrixIdentity(&matR);
+	D3DXMatrixIdentity(&matMoveT);
+	if (!(angleY < 0.0001f && angleY > -0.0001f))
+	{
+		if (angleY >= 0.0f) angleY -= 0.01;
+		else if (angleY <= 0.0f) angleY += 0.01;
+		D3DXMatrixTranslation(&matMoveT, 0.f, -0.6f, 0.f);
+		D3DXMatrixTranslation(&matOriginT, 0.f, 0.6f, 0.f);
+		D3DXMatrixRotationX(&matR, angleY);
+		return false;
+	}
+	return true;
+}

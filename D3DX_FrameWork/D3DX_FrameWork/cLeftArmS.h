@@ -13,7 +13,8 @@ public:
 	~cLeftArmS();
 
 	virtual void Init() override;
-	void MoveMotion();
+	virtual void MoveMotion() override;
+	virtual bool Recover() override;
 
 };
 
