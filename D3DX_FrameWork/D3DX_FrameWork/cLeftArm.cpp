@@ -53,6 +53,20 @@ void cLeftArm::MoveMotion()
 	D3DXMatrixRotationX(&matR, angleY);
 }
 
+void cLeftArm::PushMotion()
+{
+	D3DXMatrixIdentity(&matR);
+	D3DXMatrixIdentity(&matMoveT);
+
+	if (!(angleY <= angleMin-0.3f))
+	{
+		angleY -= 0.04f;
+	}
+	D3DXMatrixTranslation(&matMoveT, 0.f, -0.6f, 0.f);
+	D3DXMatrixTranslation(&matOriginT, 0.f, 0.6f, 0.f);
+	D3DXMatrixRotationX(&matR, angleY);
+}
+
 bool cLeftArm::Recover()
 {
 	//D3DXMatrixIdentity(&matR);

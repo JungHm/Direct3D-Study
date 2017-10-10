@@ -25,6 +25,18 @@
     <Filter Include="Manager">
       <UniqueIdentifier>{0f728c85-44c5-40de-95b5-d73d3ed322da}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\pushpush">
+      <UniqueIdentifier>{91c9d738-56d7-4e5b-9b3e-cfdc97e9a3af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\pushpush\object">
+      <UniqueIdentifier>{0a5eb39a-015e-4932-9e7b-0b9afdb6bc49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\cubeHand">
+      <UniqueIdentifier>{03bb0ed4-e891-4094-aa58-0a31064626b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\cubeOBJ">
+      <UniqueIdentifier>{3cf9b71d-8228-423d-8f6b-e134d35bf6b1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -36,9 +48,6 @@
     <ClInclude Include="cMainGame.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="cDeviceManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>소스 파일\Frame</Filter>
     </ClInclude>
@@ -48,13 +57,7 @@
     <ClInclude Include="D3DX_FrameWork.h">
       <Filter>소스 파일\Frame</Filter>
     </ClInclude>
-    <ClInclude Include="cCamera.h">
-      <Filter>소스 파일\cubeTank</Filter>
-    </ClInclude>
     <ClInclude Include="cCube.h">
-      <Filter>소스 파일\cubeTank</Filter>
-    </ClInclude>
-    <ClInclude Include="cGrid.h">
       <Filter>소스 파일\cubeTank</Filter>
     </ClInclude>
     <ClInclude Include="cBody.h">
@@ -72,14 +75,8 @@
     <ClInclude Include="cRightLeg.h">
       <Filter>소스 파일\cubeHuman</Filter>
     </ClInclude>
-    <ClInclude Include="cCubeMake.h">
-      <Filter>소스 파일\cubeHuman</Filter>
-    </ClInclude>
     <ClInclude Include="cHead.h">
       <Filter>소스 파일\cubeHuman</Filter>
-    </ClInclude>
-    <ClInclude Include="cCubeMan.h">
-      <Filter>소스 파일</Filter>
     </ClInclude>
     <ClInclude Include="cLeftArmS.h">
       <Filter>소스 파일\cubeHuman</Filter>
@@ -93,6 +90,84 @@
     <ClInclude Include="cRightLegS.h">
       <Filter>소스 파일\cubeHuman</Filter>
     </ClInclude>
+    <ClInclude Include="stone.h">
+      <Filter>소스 파일\pushpush\object</Filter>
+    </ClInclude>
+    <ClInclude Include="cCamera.h">
+      <Filter>소스 파일\Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="cGrid.h">
+      <Filter>소스 파일\Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="cDeviceManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionHelper.h">
+      <Filter>소스 파일\Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="cWrist.h">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClInclude>
+    <ClInclude Include="cJoint.h">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClInclude>
+    <ClInclude Include="cPalm.h">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClInclude>
+    <ClInclude Include="cPalmUp.h">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClInclude>
+    <ClInclude Include="cIndexFin.h">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClInclude>
+    <ClInclude Include="cIndexFinS.h">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClInclude>
+    <ClInclude Include="cMidFin.h">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClInclude>
+    <ClInclude Include="cMidFinS.h">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClInclude>
+    <ClInclude Include="cIndexFinT.h">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClInclude>
+    <ClInclude Include="cMidFinT.h">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClInclude>
+    <ClInclude Include="cLilFin.h">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClInclude>
+    <ClInclude Include="cLilFinS.h">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClInclude>
+    <ClInclude Include="cLilFinT.h">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClInclude>
+    <ClInclude Include="cRingFin.h">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClInclude>
+    <ClInclude Include="cRingFinS.h">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClInclude>
+    <ClInclude Include="cRingFinT.h">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClInclude>
+    <ClInclude Include="cThumb.h">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClInclude>
+    <ClInclude Include="cThumbS.h">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClInclude>
+    <ClInclude Include="cCubeMake.h">
+      <Filter>소스 파일\cubeOBJ</Filter>
+    </ClInclude>
+    <ClInclude Include="cCubeMan.h">
+      <Filter>소스 파일\cubeOBJ</Filter>
+    </ClInclude>
+    <ClInclude Include="cCubeHand.h">
+      <Filter>소스 파일\cubeOBJ</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -104,13 +179,7 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>소스 파일\Frame</Filter>
     </ClCompile>
-    <ClCompile Include="cCamera.cpp">
-      <Filter>소스 파일\cubeTank</Filter>
-    </ClCompile>
     <ClCompile Include="cCube.cpp">
-      <Filter>소스 파일\cubeTank</Filter>
-    </ClCompile>
-    <ClCompile Include="cGrid.cpp">
       <Filter>소스 파일\cubeTank</Filter>
     </ClCompile>
     <ClCompile Include="cBody.cpp">
@@ -128,14 +197,8 @@
     <ClCompile Include="cRightLeg.cpp">
       <Filter>소스 파일\cubeHuman</Filter>
     </ClCompile>
-    <ClCompile Include="cCubeMake.cpp">
-      <Filter>소스 파일\cubeHuman</Filter>
-    </ClCompile>
     <ClCompile Include="cHead.cpp">
       <Filter>소스 파일\cubeHuman</Filter>
-    </ClCompile>
-    <ClCompile Include="cCubeMan.cpp">
-      <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="cDeviceManager.cpp">
       <Filter>Manager</Filter>
@@ -151,6 +214,81 @@
     </ClCompile>
     <ClCompile Include="cRightLegS.cpp">
       <Filter>소스 파일\cubeHuman</Filter>
+    </ClCompile>
+    <ClCompile Include="stone.cpp">
+      <Filter>소스 파일\pushpush\object</Filter>
+    </ClCompile>
+    <ClCompile Include="cCamera.cpp">
+      <Filter>소스 파일\Frame</Filter>
+    </ClCompile>
+    <ClCompile Include="cGrid.cpp">
+      <Filter>소스 파일\Frame</Filter>
+    </ClCompile>
+    <ClCompile Include="cWrist.cpp">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClCompile>
+    <ClCompile Include="cJoint.cpp">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClCompile>
+    <ClCompile Include="cPalm.cpp">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClCompile>
+    <ClCompile Include="cPalmUp.cpp">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClCompile>
+    <ClCompile Include="cIndexFin.cpp">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClCompile>
+    <ClCompile Include="cIndexFinS.cpp">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClCompile>
+    <ClCompile Include="cMidFin.cpp">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClCompile>
+    <ClCompile Include="cMidFinS.cpp">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClCompile>
+    <ClCompile Include="cIndexFinT.cpp">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClCompile>
+    <ClCompile Include="cMidFinT.cpp">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClCompile>
+    <ClCompile Include="cLilFinT.cpp">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClCompile>
+    <ClCompile Include="cLilFinS.cpp">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClCompile>
+    <ClCompile Include="cLilFin.cpp">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClCompile>
+    <ClCompile Include="cRingFin.cpp">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClCompile>
+    <ClCompile Include="cRingFinT.cpp">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClCompile>
+    <ClCompile Include="cRingFinS.cpp">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClCompile>
+    <ClCompile Include="cThumb.cpp">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClCompile>
+    <ClCompile Include="cThumbS.cpp">
+      <Filter>소스 파일\cubeHand</Filter>
+    </ClCompile>
+    <ClCompile Include="cCubeHand.cpp">
+      <Filter>소스 파일\cubeOBJ</Filter>
+    </ClCompile>
+    <ClCompile Include="cCubeMake.cpp">
+      <Filter>소스 파일\cubeOBJ</Filter>
+    </ClCompile>
+    <ClCompile Include="cCubeMan.cpp">
+      <Filter>소스 파일\cubeOBJ</Filter>
+    </ClCompile>
+    <ClCompile Include="cubeMotion.cpp">
+      <Filter>소스 파일\cubeOBJ</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

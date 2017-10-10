@@ -43,8 +43,12 @@ public:\
 	public: varType Get##funcName(void) const { return varName; }\
 	public: void Set##funcName(varType var) { varName = var; }
 
+#define MATRIX16_FIX public: void* operator new(size_t i){return _mm_malloc(i, 16);}\
+			public: void operator delete(void* p){_mm_free(p);}
+
 #define SAFE_DELETE(p) { if(p) delete p; p = NULL; }
 #define SAFE_RELEASE(p) { if(p) p->Release(); p = NULL; }
+
 
 struct ST_PC_VERTEXT
 {
@@ -58,6 +62,14 @@ struct ST_PT_VERTEXT
 	D3DXVECTOR2	t;
 	enum { FVF = D3DFVF_XYZ | D3DFVF_TEX1};
 };
-
+struct SPHERE_PROPERTY
+{
+	D3DXVECTOR3 center;
+	float radius;
+	float scale;
+	
+};
 
 #include "cDeviceManager.h"
+#include "cCamera.h"
+

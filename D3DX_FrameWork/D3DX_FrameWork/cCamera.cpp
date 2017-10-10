@@ -6,12 +6,13 @@ cCamera::cCamera()
 	: m_vEye(0, 15, -20)
 	, m_vLookAt(0, 0, 0)
 	, m_vUp(0, 1, 0)
-	, m_fCameraDistance(5.0f)
+	, m_fCameraDistance(0,0,0)
 	, m_isLButtonDown(false)
 	, m_vCamRotAngle(0, 0, 0)
 {
 	m_ptPrevMouse.x = 0;
 	m_ptPrevMouse.y = 0;
+	Init();
 }
 
 
@@ -35,11 +36,15 @@ void cCamera::Init()
 void cCamera::Update()
 {
 	D3DXMATRIX matR, matRX, matRY;
+	D3DXMATRIX matT, matTT;
+
+	D3DXMatrixTranslation(&matT, m_fCameraDistance.x, m_fCameraDistance.y, m_fCameraDistance.z);
 	D3DXMatrixRotationX(&matRX, m_vCamRotAngle.x);
 	D3DXMatrixRotationY(&matRY, m_vCamRotAngle.y);
-	matR = matRX * matRY;
+	matR = matRX*matRY * matT;
 
-	m_vEye = D3DXVECTOR3(0, 0, -m_fCameraDistance);
+	m_vLookAt = D3DXVECTOR3(m_fCameraDistance.x, m_fCameraDistance.y, m_fCameraDistance.z);
+	m_vEye = D3DXVECTOR3(0, 8,-15);
 	D3DXVec3TransformCoord(&m_vEye, &m_vEye, &matR);
 
 	D3DXMATRIX matView;
@@ -51,16 +56,14 @@ void cCamera::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch (message)
 	{
+	case WM_RBUTTONDOWN:
+		m_isLButtonDown = false;	
+		break;
 	case WM_LBUTTONDOWN:
 		m_ptPrevMouse.x = LOWORD(lParam);
 		m_ptPrevMouse.y = HIWORD(lParam);
 		m_isLButtonDown = true;
 		break;
-
-	case WM_LBUTTONUP:
-		m_isLButtonDown = false;
-		break;
-
 	case WM_MOUSEMOVE:
 		if (m_isLButtonDown)
 		{
@@ -71,18 +74,22 @@ void cCamera::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			float fDeltaY = (float)ptCurrMouse.y - m_ptPrevMouse.y;
 			m_vCamRotAngle.y += (fDeltaX / 100.f);
 			m_vCamRotAngle.x += (fDeltaY / 100.f);
-			if (m_vCamRotAngle.x < -D3DX_PI / 2.0f + 0.0001f)
-				m_vCamRotAngle.x = -D3DX_PI / 2.0f + 0.0001f;
-			if (m_vCamRotAngle.x > D3DX_PI / 2.0f - 0.0001f)
-				m_vCamRotAngle.x = D3DX_PI / 2.0f - 0.0001f;
+			if (m_vCamRotAngle.x < -D3DX_PI / 2.0f + 0.001f)
+				m_vCamRotAngle.x = -D3DX_PI / 2.0f + 0.001f;
+			if (m_vCamRotAngle.x > D3DX_PI / 2.0f - 0.001f)
+				m_vCamRotAngle.x = D3DX_PI / 2.0f - 0.001f;
 			m_ptPrevMouse = ptCurrMouse;
 		}
 		break;
 
 	case WM_MOUSEWHEEL:
-		m_fCameraDistance -= (GET_WHEEL_DELTA_WPARAM(wParam) / 30.f);
+	/*	m_fCameraDistance -= (GET_WHEEL_DELTA_WPARAM(wParam) / 30.f);
 		if (m_fCameraDistance < 0.0001f)
-			m_fCameraDistance = 0.0001f;
+			m_fCameraDistance = 0.0001f;*/
 		break;
 	}
+}
+
+void cCamera::Release()
+{
 }

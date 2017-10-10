@@ -56,8 +56,8 @@ bool cRightArmS::Recover()
 {
 	if (!(angleY < 0.0001f && angleY > -0.0001f))
 	{
-		if (angleY >= 0.0f) angleY -= 0.01;
-		else if (angleY <= 0.0f) angleY += 0.01;
+		if (angleY >= 0.0f) angleY -= 0.01f;
+		else if (angleY <= 0.0f) angleY += 0.01f;
 		D3DXMatrixTranslation(&matMoveT, 0.f, -0.6f, 0.f);
 		D3DXMatrixTranslation(&matOriginT, 0.f, 0.6f, 0.f);
 		D3DXMatrixRotationX(&matR, angleY);

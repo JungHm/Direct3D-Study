@@ -14,6 +14,7 @@ public:
 
 	virtual void Init() override;
 	virtual void MoveMotion() override;
+	virtual void PushMotion() override;
 	virtual bool Recover() override;
 };
 

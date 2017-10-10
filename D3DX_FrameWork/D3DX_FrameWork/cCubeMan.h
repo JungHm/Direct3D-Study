@@ -1,16 +1,28 @@
 #pragma once
 class cCubeMake;
 
+enum Direction
+{
+	FRONT = 1,
+	BACK,
+	LEFT,
+	RIGHT	
+};
 
 class cCubeMan
 {
 private:
 	cCubeMake* m_pRoot;
+	LPDIRECT3DTEXTURE9 steveTex;
 
 	D3DXMATRIXA16				m_matWorld;
 	float						m_fRotY;
 	D3DXVECTOR3					m_vPosition;
 	D3DXVECTOR3					m_vDirection;
+	
+	SPHERE_PROPERTY manPos;
+
+	int pushDirection;
 public:
 	cCubeMan();
 	~cCubeMan();
@@ -19,14 +31,10 @@ public:
 	void Update();
 	void Render();
 
-	void* operator new(size_t i)
-	{
-		return _mm_malloc(i, 16);
-	}
+	SPHERE_PROPERTY GetManPos(void) { return manPos; }
 
-	void operator delete(void* p)
-	{
-		_mm_free(p);
-	}
+	int GetDirection() { return pushDirection; }
+
+	MATRIX16_FIX
 };
 
